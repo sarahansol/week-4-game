@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Crystal homework</title>
+  
+  <style type="text/css">
+    .crystal-image {
+      width: 100px;
+      height: 100px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="text-center">
+        <button class="btn btn-warning btn-xs theme-button"><span class="glyphicon glyphicon-music">
+        </span> Play Theme!</button>       
+        <button class="btn btn-default btn-xs pause-button"><span class="glyphicon glyphicon-pause"></span> Pause Song</button>  
+      </div>
+
+
+  <h1>Number to Guess: <span id="number-to-guess"></span></h1>
+
+ <h2>Your new number: <span id="newnumber"></span></h2>
+
+
+  <div id="crystals">
+
+  </div>
+
+
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js">
+  	
+
+  
+  </script>
+  <script type="text/javascript">
+  var targetNumber = Math.floor(Math.random() * 100)+50;
+  $("#number-to-guess").text(targetNumber);
+
+  var counter = 0;
+
+  var numberOptions = [10, 5, 3, 7];
+  var imageCrystaloptions = ["http://cdn.playbuzz.com/cdn/35910209-2844-45c0-b099-f4d82878d54f/00261fda-4062-4096-81fd-8cf96b9034e8.jpg","https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQqkIy2kO4h3V-p3RY3fQftS29rFHH-Jy-Kqi2sxDNd3zL4Nh969A","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpFc04Tj62fX6-dZeON87j4_tkVtfxS1DKhiwewTAmWeXGj_Yclw","data:image/jpeg;base64,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"]
+
+
+
+//Filling image from above URLs. 
+  for (var i = 0; i < 4; i++) {
+    var imageCrystal = $("<img>");
+    imageCrystal.addClass("crystal-image");
+    imageCrystal.attr("src", imageCrystaloptions[i]);
+    imageCrystal.attr("data-crystalvalue", numberOptions[i]);
+    $("#crystals").append(imageCrystal);
+  }
+  
+   
+
+//Click the image the generate the number
+  $(".crystal-image").on("click", function() {
+
+    var crystalValue = ($(this).attr("data-crystalvalue"));
+    crystalValue = parseInt(crystalValue);
+    
+    counter += crystalValue;
+  
+    var html = counter; 
+
+      document.querySelector("#newnumber").innerHTML = html;
+
+	var audioElement = document.createElement("audio");
+      audioElement.setAttribute("src", "Assets/win.mp3");
+
+	var audioElementlose = document.createElement("audio");
+      audioElementlose.setAttribute("src", "Assets/lose.wav");
+    
+    if (counter === targetNumber) {
+      document.write("<h1><strong>Congratulations!</storng></h1> <p>Refresh the page the play again</p>");audioElement.play()
+    }
+    else if (counter >= targetNumber) {
+      document.write("<h1><strong>GAME OVER</storng></h1> <p>Refresh the page the play again</p>");audioElementlose.play()
+    }
+  
+  });
+
+
+
+  </script>
+
+
+<script>
+
+    // Javascript function that wraps everything
+    $(document).ready(function() {
+
+
+
+      // Gets Link for Theme Song
+      var audioElement = document.createElement("audio");
+      audioElement.setAttribute("src", "Assets/americanidol.wav");
+
+      
+
+      // Theme Button
+
+
+      $(".theme-button").on("click", function() {
+        audioElement.play();
+      });
+
+      $(".pause-button").on("click", function() {
+        audioElement.pause();
+      });
+  
+    });
+
+   
+
+  </script>
+</body>
+</html>
